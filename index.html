@@ -1,87 +1,173 @@
-<!Doctype html>
-<html>
-  <head>
-    <title> Site web de visit burundi </title>
-    <meta charset ="UTF-8" />
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrousel de Photos</title>
+    <!-- Chargement de Tailwind CSS pour un style rapide et moderne -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      .container{
-	width: 350vmin;
-	border:10px solid #ffffff;
-	border-radius: 8px;
-	top: 50%;
-	left: 50%;
-	overflow: hidden;
-}
-.wrapper{
-	width:100%;
-	display: flex;
-	animation: slide 45s infinite;
-}
-@keyframes slide{
-	0%{
-		transform: translateX(0);
-	}
-	25%{
-		transform: translateX(0);
-	}
-	30%{
-		transform: translateX(-100%);
-	}
-	50%{
-		transform: translateX(-100%);
-	}
-	55%{
-	transform: translateX(-100%);
-	}
-	75%{
-		transform: translateX(-200%);
-	}
-	80%{
-		transform: translateX(-300%);
-	}
-	100%{
-		transform: translateX(-300%);
-	}
-      p{
-      border:1px solid blue;
-      color:blue;
-      }
-      @media screen and (max-width:300px){
-      }
-      h1{
-        text-align: center;
-      }
-      h2{
-        text-color: gray;
-        display: inline-block;
-          }
+        /* Styles personnalisés pour le carrousel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Largeur maximale du carrousel */
+            overflow: hidden;
+            border-radius: 1rem; /* Bords arrondis */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); /* Ombre douce */
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out; /* Animation de transition pour le défilement */
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: 400px; /* Hauteur fixe pour les images */
+            object-fit: cover; /* Assure que l'image couvre l'espace sans déformation */
+            flex-shrink: 0; /* Empêche les images de rétrécir */
+            border-radius: 1rem; /* Bords arrondis pour les images */
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour les boutons */
+            color: white;
+            padding: 0.75rem 1rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 0.5rem; /* Bords arrondis pour les boutons */
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .carousel-button.prev {
+            left: 1rem;
+        }
+
+        .carousel-button.next {
+            right: 1rem;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: white;
+        }
     </style>
-  </head>
-  <body>
-    <h1> VISIT FAMILY</h1>
-    <p>
-      Bienvenue a MUHIRA
-    </p>
-	  <div class="container">
-		<div class="wrapper">
-     	 <img width="400" height="500" src="AA.JPG" alt ="Papamaman" />
-    <h2>Photo de Papa et maman</h2>
- 	 <img width="400" height="500" src="A.jpg" alt ="FAMILY" />
-  <h2>Photo de Famille</h2>
- 	 <img width="400" height="500" src="B.jpg" alt ="FAMILY" />
-  <h2>Photo d'anniversaire</h2>
- 	 <img width="400" height="500" src="J.jpg" alt ="piscine" />
-<h2>Photo du piscine</h2>
-	  <img width="400" height="500" src="G.jpg" alt ="foto de fete defense" />
-<h2>Photo de andy et keke</h2>
-	  <img width="400" height="500" src="I.jpg" alt ="ettente trophee" />
- <h2>Photo de remise du tropheé</h2>			
-	<img width="400" height="500" src="L.jpg" alt ="aeroport de Bujumbura" />
-<h2>Photo de l'aeroport de Bujumbura</h2>
-	<img width="400" height="500" src="lome.jpg" alt ="aeroport de Lome" />		
-<h2>L'aeroport de Lomé</h2>
-		
-		</div>
-	  </div>
-  </body>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100 font-sans">
+
+    <div class="carousel-container">
+        <div class="carousel-images" id="carouselImages">
+            <!-- Images du carrousel. Remplacez les URLs par vos propres images. -->
+            <img width="400" height="500" src="A.jpg" alt ="FAMILY" />
+	    <img width="400" height="500" src="AA.JPG" alt ="Papamaman" />
+ 	    <img width="400" height="500" src="B.jpg" alt ="FAMILY" />
+ 	    <img width="400" height="500" src="J.jpg" alt ="piscine" />
+            <img width="400" height="500" src="G.jpg" alt ="foto de fete defense" />
+            <img width="400" height="500" src="I.jpg" alt ="ettente trophee" />
+            <img width="400" height="500" src="L.jpg" alt ="aeroport de Bujumbura" />
+            <img width="400" height="500" src="lome.jpg" alt ="aeroport de Lome" />
+        </div>
+
+        <!-- Boutons de navigation -->
+        <button class="carousel-button prev" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-button next" onclick="nextSlide()">&#10095;</button>
+
+        <!-- Indicateurs de points -->
+        <div class="carousel-dots" id="carouselDots">
+            <!-- Les points seront générés par JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const carouselImages = document.getElementById('carouselImages');
+        const carouselDots = document.getElementById('carouselDots');
+        const images = carouselImages.querySelectorAll('img');
+        let currentIndex = 0;
+        const totalImages = images.length;
+        let intervalId; // Pour stocker l'ID de l'intervalle pour le défilement automatique
+
+        // Fonction pour mettre à jour l'affichage du carrousel
+        function updateCarousel() {
+            const offset = -currentIndex * 100; // Calcul du décalage pour l'animation
+            carouselImages.style.transform = `translateX(${offset}%)`;
+            updateDots();
+        }
+
+        // Fonction pour passer à l'image suivante
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+            resetAutoSlide(); // Réinitialise le timer après une interaction manuelle
+        }
+
+        // Fonction pour passer à l'image précédente
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+            resetAutoSlide(); // Réinitialise le timer après une interaction manuelle
+        }
+
+        // Fonction pour mettre à jour les indicateurs de points
+        function updateDots() {
+            carouselDots.innerHTML = ''; // Efface les points existants
+            for (let i = 0; i < totalImages; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === currentIndex) {
+                    dot.classList.add('active'); // Marque le point actif
+                }
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateCarousel();
+                    resetAutoSlide(); // Réinitialise le timer après une interaction manuelle
+                });
+                carouselDots.appendChild(dot);
+            }
+        }
+
+        // Fonction pour démarrer le défilement automatique
+        function startAutoSlide() {
+            intervalId = setInterval(nextSlide, 3000); // Change d'image toutes les 3 secondes
+        }
+
+        // Fonction pour réinitialiser le défilement automatique
+        function resetAutoSlide() {
+            clearInterval(intervalId); // Arrête l'intervalle actuel
+            startAutoSlide(); // Redémarre un nouvel intervalle
+        }
+
+        // Initialisation du carrousel au chargement de la page
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarousel(); // Affiche la première image et les points
+            startAutoSlide(); // Démarre le défilement automatique
+        });
+    </script>
+</body>
 </html>
+
